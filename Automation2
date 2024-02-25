@@ -1,0 +1,56 @@
+import com.microsoft.playwright.*;
+import java.nio.file.Paths;
+
+public class rtcampassignment {
+
+    public static void main(String[] args) {
+        try {
+            // Launch a new browser instance
+            Playwright playwright = Playwright.create();
+            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            Page page = browser.newPage();
+
+            // Navigate to Amazon
+            page.navigate("https://www.amazon.com");
+
+            // Click on Sign In link
+            page.click("id=nav-link-accountList");
+
+            // Input email and continue
+            page.fill("id=ap_email", "mainironman888@gmail.com");
+            page.click("id=continue");
+
+            // Input password and sign in
+            page.fill("id=ap_password", "qwerty@123");
+            page.click("id=signInSubmit");
+
+            // Search for product
+            page.fill("id=twotabsearchtextbox", "redmi note 13 pro plus");
+            page.click("id=nav-search-submit-button");
+
+            // Click on the first product
+            page.click("//img[@class='s-image']");
+
+            // Add to wishlist
+            page.click("id=wishListMainButton");
+            page.waitForTimeout(3000);
+
+            // Go to wishlist
+            page.click("text=Your Hearts");
+
+            // Click on the product in the wishlist
+            page.click("id=pab-IU3DDX0M77Z6S");
+            page.waitForTimeout(5000);
+
+            // Proceed to checkout
+            page.click("text=Proceed to checkout");
+
+            // Close the browser
+            browser.close();
+            playwright.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
