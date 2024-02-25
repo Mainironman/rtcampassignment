@@ -1,0 +1,34 @@
+package rtcampassingment;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class rtcampassignment {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+	
+		driver.get("https://Amazon.com");
+		driver.findElement(By.id("nav-link-accountList")).click();
+		driver.findElement(By.id("ap_email")).sendKeys("mainironman888@gmail.com");
+		driver.findElement(By.id("continue")).click();
+		driver.findElement(By.id("ap_password")).sendKeys("qwerty@123");
+		driver.findElement(By.id("signInSubmit")).click();
+		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("redmi note 13 pro plus");
+		driver.findElement(By.id("nav-search-submit-button")).click();
+        driver.findElement(By.xpath("//img[@class='s-image']")).click();
+        driver.findElement(By.id("wishListMainButton")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.findElement(By.xpath("//a[@href=\"https://www.amazon.com/hz/wishlist/ls/1AP62UO9VGY9R?ref_=wl_dp_view_your_list\"][1]")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.findElement(By.id("pab-IU3DDX0M77Z6S")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.findElement(By.xpath("//a[@class=\"a-button-text\"]/span[text()=\"Proceed to checkout\"]")).click();
+		}
+
+}
